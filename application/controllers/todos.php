@@ -53,6 +53,32 @@ class todos extends CI_Controller {
 		
 
 	}
+
+	public function edit(){
+
+		$data ['title'] = "Edit your task";
+
+		$id = $this->uri->segment(3); 
+
+		$data ['todos'] = $this->todo_model->get_todos($id);
+
+		//print_r ($data['todos']);exit;
+		
+
+		$this->form_validation->set_rules('title','Title','required');
+		$this->form_validation->set_rules('description','Description','required');
+
+		if ($this->form_validation->run()==FALSE){
+
+			$this->load->view('edit',$data);
+		}
+
+		else{
+			$this->todo_model->set_todos($id);
+			redirect( base_url() . 'todos');
+		}
+
+	}
 }
 
 /* End of file welcome.php */

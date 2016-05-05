@@ -6,7 +6,7 @@
         <?php echo $todo['description'] ?>
     </div>
     	
-<a href='#'>View</a>|<a href='#'>Edit</a>|<a href='#'>Delete</a>
+<a href='#'>View</a>|<a href='edit/<?php echo $todo['id'];?>'>edit</a>|<a href='#'>Delete</a>
 <hr> 
  <?php endforeach ?>    
 
